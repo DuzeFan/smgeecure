@@ -1,0 +1,37 @@
+Package: smgeecure
+Title: Semiparametric Marginal Mixture Cure Models with Generalized
+        Estimating Equations
+Version: 1.0.3
+Authors@R: 
+  c(
+  person(given = "Duze",
+         family = "Fan",
+         role = c("aut", "cre"),
+         email = "fdz@mail.dlut.edu.cn"),
+  person(given = "Jie",
+         family = "Ding",
+         role = c("aut", "cre"),
+         email = "dingjie@mail.dlut.edu.cn",
+         comment = c(ORCID = "0000-0002-6083-7529")),
+  person(given = "Yingwei",
+         family = "Peng",
+         role = c("aut", "cre"),
+         email = "pengp@queensu.ca",
+         comment = c(ORCID = "0000-0001-7391-9788")),
+  person(given = "Yi", 
+         family = "Niu", 
+         role = c("aut", "cre"),  
+         email = "niuyi@dlut.edu.cn") 
+  )
+Author: Duze Fan [aut, cre], Jie Ding [aut, cre], Yingwei Peng [aut, cre], Yi Niu [aut, cre]
+Maintainer: Duze Fan <fdz@mail.dlut.edu.cn>
+Description: Features the marginal semi-parametric proportional hazards/accelerated failure time mixture cure models for analyzing clustered survival data with a possible cure fraction.
+License: GPL (>= 2)
+Encoding: UTF-8
+Imports: Matrix, MASS, geepack, methods
+Depends: survival, geecure
+LazyData: TRUE
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0
+NeedsCompilation: no
+Packaged: 2022-06-30 02:31:16 UTC; biost
