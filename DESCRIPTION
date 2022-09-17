@@ -1,5 +1,6 @@
 Package: smgeecure
-Title: Semiparametric Marginal Mixture Cure Models with Generalized Estimating Equations
+Title: Semiparametric Marginal Mixture Cure Models with Generalized
+        Estimating Equations
 Version: 1.0.4
 Authors@R: 
   c(
@@ -32,9 +33,5 @@ Depends: survival, geecure
 LazyData: TRUE
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
-URL: http://github.com/DuzeFan/smgeecure
-BugReports: http://github.com/DuzeFan/smgeecure
-
-
-
-
+NeedsCompilation: no
+Packaged: 2022-09-17 00:43:02 UTC; biost
