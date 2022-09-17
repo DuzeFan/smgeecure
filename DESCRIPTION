@@ -1,7 +1,7 @@
 Package: smgeecure
 Title: Semiparametric Marginal Mixture Cure Models with Generalized
         Estimating Equations
-Version: 1.0.3
+Version: 1.0.4
 Authors@R: 
   c(
   person(given = "Duze",
@@ -11,7 +11,7 @@ Authors@R:
   person(given = "Jie",
          family = "Ding",
          role = c("aut", "cre"),
-         email = "dingjie@mail.dlut.edu.cn",
+         email = "biostat_jieding@outlook.com",
          comment = c(ORCID = "0000-0002-6083-7529")),
   person(given = "Yingwei",
          family = "Peng",
@@ -24,7 +24,7 @@ Authors@R:
          email = "niuyi@dlut.edu.cn") 
   )
 Author: Duze Fan [aut, cre], Jie Ding [aut, cre], Yingwei Peng [aut, cre], Yi Niu [aut, cre]
-Maintainer: Duze Fan <fdz@mail.dlut.edu.cn>
+Maintainer: Duze Fan <fdz@mail.dlut.edu.cn>, Jie Ding <biostat_jieding@outlook.com>
 Description: Features the marginal semi-parametric proportional hazards/accelerated failure time mixture cure models for analyzing clustered survival data with a possible cure fraction.
 License: GPL (>= 2)
 Encoding: UTF-8
@@ -34,4 +34,4 @@ LazyData: TRUE
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
 NeedsCompilation: no
-Packaged: 2022-06-30 02:31:16 UTC; biost
+Packaged: 2022-09-17 00:43:02 UTC; biost
