@@ -4,3 +4,4 @@ export(print.smgeecure)
 export(smgeecure)
 importFrom(survival,Surv)
 importFrom(survival,survreg)
+
