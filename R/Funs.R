@@ -1,8 +1,4 @@
 
-
-
-
-
 #========================================================#
 # Fit the semiparametric accelerated failure time mixture cure model using Zhang and Peng (2007) ####
 #========================================================#
