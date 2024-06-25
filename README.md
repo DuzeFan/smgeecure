@@ -17,7 +17,7 @@ smgeecure(formula, cureform, id, data, model = c("aft", "ph"), corstr = c("indep
 ```
 - **print.smgeecure**: print outputted results from **smgeecure()** with syntax
 ```R
-print.SMC.AuxSP(object)
+print.smgeecure(fit)
 ```
 
 ## Numerical illustrations
