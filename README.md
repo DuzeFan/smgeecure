@@ -6,13 +6,14 @@ This is an R package for fitting marginal semiparametric mixture cure models for
 
 Installation of this package can be done locally after downloading the package manually from this github website. We have also uploaded this package to the Comprehensive R Archive Network (CRAN) so that it can be downloaded as a standard R package using R command
 ```R
-install.packages("smgeecure")**.
+install.packages("smgeecure").
 ```
 
 Our provided main functions are (we refer to their help pages for more details):
 - **smgeecure**: fit the models in various ways with syntax
 ```R
-SMC.AuxSP(formula, cureform, sdata, aux = NULL, hetero = FALSE, N = Inf, latency = "PH", nboot = 400)
+smgeecure(formula, cureform, id, data, model = c("aft", "ph"), corstr = c("independence", "exchangeable", "ar1"),
+          Var = TRUE,nboot = 100, stdz = TRUE, esmax = 20, eps = 1e-04)
 ```
 - **print.smgeecure**: print outputted results from SMC.AuxSP() with syntax
 ```R
