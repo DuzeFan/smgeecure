@@ -22,7 +22,7 @@ print.smgeecure(fit)
 
 ## Numerical illustrations
 
-### An example using a real dataset from TCGA program is shown below:
+### An example using "tonsil cancer clinical trial data" is shown below:
 ```R
 # ---- prepare the data
 data(tonsil)
