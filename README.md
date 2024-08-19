@@ -15,7 +15,8 @@ library(smgeecure)
 The main function included in our R package is *smgeecure()* and there is also a function *print.smgeecure()* for printing fitted results with a better presentation. To sum up, they can be called via:
 - **smgeecure**: fit the models in various ways with synopsis
 ```R
-smgeecure(formula, cureform, data, id, model = c("aft", "ph"), corstr = c("independence", "exchangeable", "ar1"),
+smgeecure(formula, cureform, data, id, model = c("aft", "ph"),
+          corstr = c("independence", "exchangeable", "ar1"),
           Var = TRUE, nboot = 100, stdz = TRUE, esmax = 20, eps = 1e-04)
 ```
 - **print.smgeecure**: print outputted results from the previous function *smgeecure()* with syntax
