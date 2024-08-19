@@ -72,8 +72,8 @@ legend("topright", c("Massive/Female","Massive/Male","Non-massive/Female","Non-m
 ```
 
 #### Fit the data using marginal semi-parametric marginal AFTMC model
+- exchangeable correlation
 ```R
-# fit marginal semi-parametric marginal AFTMC model (exchangeable correlation)
 set.seed(521)
 tonsil.aft.gee.ex <- smgeecure(
         formula = Surv(Time, Status) ~ Sex + factor(Grade) + Age + Cond + T, 
@@ -81,8 +81,9 @@ tonsil.aft.gee.ex <- smgeecure(
         data = tonsil, model = "aft", corstr = "exchangeable", Var = T, nboot = 100
 )
 print.smgeecure(tonsil.aft.gee.ex)
-
-# fit marginal semi-parametric AFTMC model (independence correlation)
+```
+- independence correlation
+```R
 set.seed(521)
 tonsil.aft.gee.ind <- smgeecure(
         formula = Surv(Time, Status) ~ Sex + factor(Grade) + Age + Cond + T, 
@@ -131,8 +132,8 @@ legend("topright", c("ALL","AML low risk","AML high risk"),
 ```
 
 #### Fit the data using marginal semi-parametric marginal AFTMC model
+- exchangeable correlation
 ```R
-# fit marginal semi-parametric PHMC model (exchangeable correlation)
 set.seed(1)
 bmt.ph.gee.ex <- smgeecure(
   formula = Surv(T2, d3) ~ factor(g) + Z8, cureform = ~ factor(g) + Z8, 
@@ -140,8 +141,9 @@ bmt.ph.gee.ex <- smgeecure(
   Var = T,nboot = 100, esmax = 100, eps = 1e-06
 )
 print.smgeecure(bmt.ph.gee.ex)
-
-# fit marginal semi-parametric PHMC model (independence correlation)
+```
+- independence correlation
+```R
 set.seed(1)
 bmt.ph.gee.ind <- smgeecure(
   formula = Surv(T2, d3) ~ factor(g) + Z8, cureform = ~ factor(g) + Z8, 
