@@ -7,8 +7,7 @@ This is an R package for fitting marginal semiparametric mixture cure models for
 
 Installation of this package can be done locally after downloading the package manually from this github website. We will also upload this package to the Comprehensive R Archive Network (CRAN) so that it can be downloaded as a standard R package. Currently, it can be loaded using R command
 ```R
-library(devtools)
-install_github("yiniu06/smgeecure")
+devtools::install_github("yiniu06/smgeecure")
 library(smgeecure)
 ```
 
