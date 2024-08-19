@@ -12,16 +12,17 @@ install_github("yiniu06/smgeecure")
 library(smgeecure)
 ```
 
-Our provided main functions are (we refer to their help pages for more details):
+The main function included in our R package is *smgeecure()* and there is also a function *print.smgeecure()* for printing fitted results with a better presentation. To sum up, they can be called via:
 - **smgeecure**: fit the models in various ways with synopsis
 ```R
-smgeecure(formula, cureform, id, data, model = c("aft", "ph"), corstr = c("independence", "exchangeable", "ar1"),
-          Var = TRUE,nboot = 100, stdz = TRUE, esmax = 20, eps = 1e-04)
+smgeecure(formula, cureform, data, id, model = c("aft", "ph"), corstr = c("independence", "exchangeable", "ar1"),
+          Var = TRUE, nboot = 100, stdz = TRUE, esmax = 20, eps = 1e-04)
 ```
 - **print.smgeecure**: print outputted results from **smgeecure()** with syntax
 ```R
 print.smgeecure(fit)
 ```
+We refer to their help pages for more detailed explanations of the corresponding arguments.
 
 ## Numerical illustrations
 
