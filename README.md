@@ -1,4 +1,5 @@
-# smgeecure
+# *smgeecure* R package
+## Fitting Semiparametric Marginal Mixture Cure Models
 This is an R package for fitting marginal semiparametric mixture cure models for clustered survival data.
 - Two semiparametric mixture cure models are implemented: the *marginal accelerated failure time mixture cure* (**AFTMC**) model and the *marginal proportional hazards mixture cure* (**PHMC**) model.
 
