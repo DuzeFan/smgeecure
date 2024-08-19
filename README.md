@@ -22,7 +22,9 @@ smgeecure(formula, cureform, data, id, model = c("aft", "ph"), corstr = c("indep
 ```R
 print.smgeecure(fit)
 ```
-We refer to their help pages for more detailed explanations of the corresponding arguments.
+We refer to their help pages for more detailed explanations of the corresponding arguments. Visually, the usages of part of the key arguments can be summarized via the following Figure:
+![Graph-Illustration-of-Our-Method](https://github.com/user-attachments/assets/97c1def9-58af-4b7c-a61a-9ca5e07c0245)
+
 
 ## Numerical illustrations
 
