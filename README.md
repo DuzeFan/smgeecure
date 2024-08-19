@@ -23,7 +23,8 @@ smgeecure(formula, cureform, data, id, model = c("aft", "ph"), corstr = c("indep
 print.smgeecure(fit)
 ```
 We refer to their help pages for more detailed explanations of the corresponding arguments. Visually, the usages of part of the key arguments can be summarized via the following Figure:
-![Graph-Illustration-of-Our-Method](https://github.com/user-attachments/assets/97c1def9-58af-4b7c-a61a-9ca5e07c0245)
+![Graph-Illustration-of-Our-Method](https://github.com/user-attachments/assets/744d9d80-52af-459e-ac08-496be9486d0d)
+
 
 
 ## Numerical illustrations
@@ -46,19 +47,6 @@ tonsil$Grade3 <- ifelse(tonsil$Grade==3,1,0)
 table(tonsil$Inst)
 ```
 
-#### Plot the overall Kaplan-Meier survival curve
-```R
-plot(survival::survfit(survival::Surv(Time, Status) ~ 1, data = tonsil), 
-     conf.int = T, mark.time = TRUE, lwd=1.5,
-     ylab = "Survival Probability", xlab = "Survival Time (in Days)", 
-     xlim = c(0,2000), ylim = c(0,1),
-     cex.lab = 1, 
-     xaxt = "n", yaxt = "n"
-)
-axis(1,seq(0,2000,500),seq(0,2000,500),cex.axis = 1)
-axis(2,seq(0,1,0.2),seq(0,1,0.2),cex.axis = 1)
-```
-
 #### Plot the stratified Kaplan-Meier survival curve
 ```R
 plot(survival::survfit(survival::Surv(Time, Status) ~ Sex + T, data = tonsil),
@@ -72,6 +60,8 @@ axis(2,seq(0,1,0.2),seq(0,1,0.2),cex.axis=1)
 legend("topright", c("Massive/Female","Massive/Male","Non-massive/Female","Non-massive/Male"),
        cex = 1, col = c(1,2,3,4), lty = c(1,2,3,4))
 ```
+![Figure_Tonsil_KM_SexTumorsize](https://github.com/user-attachments/assets/7874b5c8-46ea-4235-af6b-6e6e49c592ac)
+
 
 #### Fit the data using marginal semi-parametric marginal AFTMC model
 - exchangeable correlation
@@ -106,19 +96,6 @@ bmt$g <- factor(bmt$g, label = c("ALL", "AML low risk","AML high risk"))
 bmt$Z8 <- factor(bmt$Z8, label = c("Otherwise", "FAB"))
 ```
 
-#### Plot the overall Kaplan-Meier survival curve
-```R
-plot(survival::survfit(survival::Surv(T2, d3) ~ 1, data = bmt), 
-     conf.int = T, mark.time = TRUE, lwd=1.5,
-     ylab = "Survival Probability", xlab = "Survival Time (in Days)", 
-     xlim = c(0,2800), ylim = c(0,1),
-     xaxt = "n", yaxt = "n",
-     cex.lab = 1
-)
-axis(1,seq(0,2800,400),seq(0,2800,400),cex.axis = 1)
-axis(2,seq(0,1,0.2),seq(0,1,0.2),cex.axis = 1)
-```
-
 #### Plot the stratified Kaplan-Meier survival curve
 ```R
 plot(survival::survfit(survival::Surv(T2, d3) ~ factor(g), data = bmt),
@@ -132,6 +109,8 @@ axis(2,seq(0,1,0.2),seq(0,1,0.2),cex.axis=1)
 legend("topright", c("ALL","AML low risk","AML high risk"),
        cex = 1, col = c(1,2,3), lty = c(1,2,3))
 ```
+![Figure_bmt_KM_g](https://github.com/user-attachments/assets/e7a48faf-2e77-49aa-84cf-3190e15e0cae)
+
 
 #### Fit the data using marginal semi-parametric marginal AFTMC model
 - exchangeable correlation
