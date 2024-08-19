@@ -4,9 +4,11 @@ This is an R package for fitting marginal semiparametric mixture cure models for
 
 ## Package description and included main functions
 
-Installation of this package can be done locally after downloading the package manually from this github website. We have also uploaded this package to the Comprehensive R Archive Network (CRAN) so that it can be downloaded as a standard R package using R command
+Installation of this package can be done locally after downloading the package manually from this github website. We will also upload this package to the Comprehensive R Archive Network (CRAN) so that it can be downloaded as a standard R package. Currently, it can be loaded using R command
 ```R
-install.packages("smgeecure")
+library(devtools)
+install_github("yiniu06/smgeecure")
+library(smgeecure)
 ```
 
 Our provided main functions are (we refer to their help pages for more details):
@@ -21,6 +23,8 @@ print.smgeecure(fit)
 ```
 
 ## Numerical illustrations
+
+An example of the use of this package using real data can be found in the following sections of this file.
 
 ### An example using "tonsil cancer clinical trial data" is shown below:
 ```R
