@@ -18,7 +18,7 @@ The main function included in our R package is *smgeecure()* and there is also a
 smgeecure(formula, cureform, data, id, model = c("aft", "ph"), corstr = c("independence", "exchangeable", "ar1"),
           Var = TRUE, nboot = 100, stdz = TRUE, esmax = 20, eps = 1e-04)
 ```
-- **print.smgeecure**: print outputted results from **smgeecure()** with syntax
+- **print.smgeecure**: print outputted results from the previous function *smgeecure()* with syntax
 ```R
 print.smgeecure(fit)
 ```
