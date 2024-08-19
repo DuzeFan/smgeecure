@@ -28,9 +28,12 @@ We refer to their help pages for more detailed explanations of the corresponding
 
 An example of the use of this package using real data can be found in the following sections of this file.
 
-### An example using "tonsil cancer clinical trial data" is shown below:
+### An example using the tonsil cancer clinical trial data
+
+The tonsil cancer clinical trial study was conducted by the Radiation Therapy Oncology Group in the United States. We consider the semparametric marginal AFTMC model to the data with our function $smgeecure()$.
+
+#### Data preparation
 ```R
-# ---- prepare the data
 data(tonsil)
 tonsil <- tonsil[-c(141,136,159),]
 tonsil$Sex <- ifelse(tonsil$Sex == 1, 0, 1) # 1="Female"
@@ -39,9 +42,10 @@ tonsil$T <- ifelse(tonsil$T < 4, 0, 1)
 tonsil$Grade2 <- ifelse(tonsil$Grade==2,1,0)
 tonsil$Grade3 <- ifelse(tonsil$Grade==3,1,0)
 table(tonsil$Inst)
+```
 
-# ---- plot the KM survival curve (overall)
-pdf("Figure_Tonsil_KM.pdf",width=7,height=6)
+#### Plot the overall Kaplan-Meier survival curve
+```R
 plot(survival::survfit(survival::Surv(Time, Status) ~ 1, data = tonsil), 
      conf.int = T, mark.time = TRUE, lwd=1.5,
      ylab = "Survival Probability", xlab = "Survival Time (in Days)", 
@@ -51,10 +55,10 @@ plot(survival::survfit(survival::Surv(Time, Status) ~ 1, data = tonsil),
 )
 axis(1,seq(0,2000,500),seq(0,2000,500),cex.axis = 1)
 axis(2,seq(0,1,0.2),seq(0,1,0.2),cex.axis = 1)
-dev.off()
+```
 
-# ---- plot the KM survival curve (stratified)
-pdf("Figure_Tonsil_KM_SexTumorsize.pdf",width=7,height=6)
+#### Plot the stratified Kaplan-Meier survival curve
+```R
 plot(survival::survfit(survival::Surv(Time, Status) ~ Sex + T, data = tonsil),
      conf.int = F,  mark.time = TRUE, lwd=1.5,
      ylab = "Survival Probability", xlab = "Survival Time (in Days)",
@@ -65,10 +69,10 @@ axis(1,seq(0,2000,400),seq(0,2000,400),cex.axis=1)
 axis(2,seq(0,1,0.2),seq(0,1,0.2),cex.axis=1)
 legend("topright", c("Massive/Female","Massive/Male","Non-massive/Female","Non-massive/Male"),
        cex = 1, col = c(1,2,3,4), lty = c(1,2,3,4))
-dev.off()
+```
 
-# ---- Fit the data using marginal semi-parametric marginal AFTMC model
-
+#### Fit the data using marginal semi-parametric marginal AFTMC model
+```R
 # fit marginal semi-parametric marginal AFTMC model (exchangeable correlation)
 set.seed(521)
 tonsil.aft.gee.ex <- smgeecure(
@@ -86,33 +90,66 @@ tonsil.aft.gee.ind <- smgeecure(
         data = tonsil, model = "aft", corstr = "independence", Var = T, nboot = 100
 )
 print.smgeecure(tonsil.aft.gee.ind)
+```
 
-# output the results
-write.csv(cbind(tonsil.aft.gee.ex$incidence,rbind(NA,tonsil.aft.gee.ex$latency)),
-          "tonsil.aft.gee.ex.csv")
-write.csv(cbind(tonsil.aft.gee.ind$incidence,rbind(NA,tonsil.aft.gee.ind$latency)),
-          "tonsil.aft.gee.ind.csv")
+### An example using the bone marrow transplantation data
 
-# ---- Fit the data using marginal semi-parametric marginal PHMC model
+The bone marrow transplantation data consists of 137 patients enrolled in the study from March 1, 1984 to June 30, 1989 at four institutions or hospitals. We consider the semparametric marginal PHMC model to the data with our function $smgeecure()$.
 
+#### Data preparation
+```R
+data(bmt)
+bmt$g <- factor(bmt$g, label = c("ALL", "AML low risk","AML high risk"))
+bmt$Z8 <- factor(bmt$Z8, label = c("Otherwise", "FAB"))
+```
+
+#### Plot the overall Kaplan-Meier survival curve
+```R
+plot(survival::survfit(survival::Surv(T2, d3) ~ 1, data = bmt), 
+     conf.int = T, mark.time = TRUE, lwd=1.5,
+     ylab = "Survival Probability", xlab = "Survival Time (in Days)", 
+     xlim = c(0,2800), ylim = c(0,1),
+     xaxt = "n", yaxt = "n",
+     cex.lab = 1
+)
+axis(1,seq(0,2800,400),seq(0,2800,400),cex.axis = 1)
+axis(2,seq(0,1,0.2),seq(0,1,0.2),cex.axis = 1)
+```
+
+#### Plot the stratified Kaplan-Meier survival curve
+```R
+plot(survival::survfit(survival::Surv(T2, d3) ~ factor(g), data = bmt),
+     conf.int = F,  mark.time = TRUE, lwd=1.5,
+     ylab = "Survival Probability", xlab = "Survival Time (in Days)",
+     xlim = c(0,2800), ylim = c(0,1),
+     lty = c(1,2,3), col = c(1,2,3),
+     xaxt = "n", yaxt = "n", cex.lab=1)
+axis(1,seq(0,2800,400),seq(0,2800,400),cex.axis=1)
+axis(2,seq(0,1,0.2),seq(0,1,0.2),cex.axis=1)
+legend("topright", c("ALL","AML low risk","AML high risk"),
+       cex = 1, col = c(1,2,3), lty = c(1,2,3))
+```
+
+#### Fit the data using marginal semi-parametric marginal AFTMC model
+```R
 # fit marginal semi-parametric PHMC model (exchangeable correlation)
 set.seed(1)
-tonsil.ph.gee.ex <- smgeecure(
-        formula = Surv(Time, Status) ~ Sex + factor(Grade) + Age + Cond + T, 
-        cureform = ~ Sex + factor(Grade) + Age + Cond + T, id = tonsil$Inst, 
-        data = tonsil, model = "ph", corstr = "exchangeable", Var = T,nboot = 100
+bmt.ph.gee.ex <- smgeecure(
+  formula = Surv(T2, d3) ~ factor(g) + Z8, cureform = ~ factor(g) + Z8, 
+  id = bmt$Z9, data = bmt, model = "ph", corstr = "exchangeable", 
+  Var = T,nboot = 100, esmax = 100, eps = 1e-06
 )
-print.smgeecure(tonsil.ph.gee.ex)
+print.smgeecure(bmt.ph.gee.ex)
 
 # fit marginal semi-parametric PHMC model (independence correlation)
 set.seed(1)
-tonsil.ph.gee.ind <- smgeecure(
-        formula = Surv(Time, Status) ~ Sex + factor(Grade) + Age + Cond + T, 
-        cureform = ~ Sex + factor(Grade) + Age + Cond + T, id = tonsil$Inst, 
-        data = tonsil, model = "ph", corstr = "independence", Var = F, nboot = 100
+bmt.ph.gee.ind <- smgeecure(
+  formula = Surv(T2, d3) ~ factor(g) + Z8, cureform = ~ factor(g) + Z8, 
+  id = bmt$Z9, data = bmt, model = "ph", corstr = "independence", 
+  Var = T, nboot = 100, esmax = 100, eps = 1e-06
 )
-print.smgeecure(tonsil.ph.gee.ind)
+print.smgeecure(bmt.ph.gee.ind)
 ```
 
-More practical examples are presented in the help file of *smgeecure()*.
+
 
